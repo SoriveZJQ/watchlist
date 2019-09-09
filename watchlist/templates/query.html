@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>成绩统计</title>
+       <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" type="text/css">
+    </head>
+    <body>
+        <div class="form">
+            <form class="form" action="index" method="post"  id="form" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.fileopenname.label }}
+                    {% for error in form.fileopen.errors %}
+                    <span style="color: red">{{ error }}</span>
+                    {% endfor %}<br />
+                    {{ form.fileopenname(class="input filename") }}
+                    {{ form.fileopen(class="file") }}<br />
+                </p>
+                <p>
+                    {{ form.term.label }}
+                    {% for error in form.term.errors %}
+                    <span style="color: red">{{ error }}</span>
+                    {% endfor %}<br />
+                    {{ form.term(class="input") }}<br />
+                </p>
+                <p>
+                    {{ form.filestorename.label }}
+                    {% for error in form.filestore.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}<br />
+                    {{ form.filestorename(class="input filename") }}
+                    {{ form.filestore(class="file") }}<br />
+                </p>
+                <p>{{ form.submit(class="submit", type="submit") }}</p>
+                <p>
+                    {{ form.result.label }}<br />
+                    {% if flag==1 %}
+                    {{ form.result(class="result", placeholder=info) }}
+                    {% else %}
+                    {{ form.result(class="result") }}
+                    {% endif %}
+                </p>
+            </form>
+        </div>
+    </body>
+    <script  src="{{ url_for('static', filename='index.js') }}"></script>
+</html>
