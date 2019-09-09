@@ -20,8 +20,4 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 from watchlist import views
 
 
-if __name__ == '__main__':
-    app.run()
-
-
 
