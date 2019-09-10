@@ -1,0 +1,45 @@
+body {
+    background-image: url("/static/mdz.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+    font-size: 2.3vh;
+}
+div.form {
+    margin-left: 36%;
+    border: 2px red solid;
+    width: 30%;
+    height: 92%;
+    margin-top: 2%;
+    background-color: azure;
+    opacity: 0.8;
+}
+form.form {
+    width: 100%;
+    margin-left: 15%;
+    margin-top: 6%;
+}
+.submit {
+    height: 7%;
+    width: 10%;
+    margin-left: 20%;
+    border-radius: 50%;
+    border: 1px red dotted;
+    color: blue;
+}
+.input {
+    width: 55%;
+    border: 1px black solid;
+}
+.filename {
+    font-weight: bolder;
+}
+.file {
+    width: 14.5%;
+}
+.result {
+    resize: none;
+    width: 55%;
+    height: 50%;
+    border: 1px black solid;
+
+}
