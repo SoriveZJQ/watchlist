@@ -19,12 +19,5 @@ class InfoForm(FlaskForm):
         #default=1,
         coerce=int
     )
-    filestorename = StringField(label='存储位置', render_kw={'placeholder': '需要先创建EXCEL空文件', 'disabled': 'disabled'})
-    filestore = FileField(
-        validators=[
-            FileRequired('请选择存储位置'),
-            FileAllowed(['xls', 'xlsx'], '只存储.xls和.xlsx格式的文件')
-        ]
-    )
     submit = SubmitField('执行')
     result = TextAreaField('结果如下⬇⬇⬇', render_kw={'disabled': 'disabled'})

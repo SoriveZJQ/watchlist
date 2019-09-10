@@ -22,14 +22,6 @@
                     {% endfor %}<br />
                     {{ form.term(class="input") }}<br />
                 </p>
-                <p>
-                    {{ form.filestorename.label }}
-                    {% for error in form.filestore.errors %}
-                    <span style="color: red;">{{ error }}</span>
-                    {% endfor %}<br />
-                    {{ form.filestorename(class="input filename") }}
-                    {{ form.filestore(class="file") }}<br />
-                </p>
                 <p>{{ form.submit(class="submit", type="submit") }}</p>
                 <p>
                     {{ form.result.label }}<br />
@@ -38,6 +30,9 @@
                     {% else %}
                     {{ form.result(class="result") }}
                     {% endif %}
+                </p>
+                <p class="download">
+                    <a href="/static/score.xlsx" class="download"  download="score.xlsx">下载成绩表</a>
                 </p>
             </form>
         </div>

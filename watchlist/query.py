@@ -2,9 +2,11 @@
 # -*- coding:utf-8 -*-
 import time
 import requests
-import re
 import hashlib
+import re
+import os
 from openpyxl import load_workbook
+from openpyxl import Workbook
 from pyquery import PyQuery as pq
 
 #MD5加密
@@ -51,7 +53,6 @@ def query(file, xterm):
             continue
         value = str(cell.value)
         accounts.append(value)
-        #print(value)
         val1 = int(value[0:4])
         val2 = xterm % 2
         if val2==0:
@@ -190,11 +191,11 @@ def query(file, xterm):
                     raise Exception
             person[name[0].strip()] = score
 
-            #self.file_changed_signal.emit('{} 获取成功！'.format(self.accounts[i]))
+
 
         except Exception:
             errors += 1
-            #self.file_changed_signal.emit('{} 获取<span style="color: red">失败</span>！'.format(self.accounts[i]))
+
 
 
 
@@ -205,14 +206,8 @@ def store(file):
         max_courses.extend(list(course.keys()))
     max_courses = list(set(max_courses))
     max_courses.sort()
-    #wb = Workbook()
-    #ws = wb.active
-    wb = load_workbook(file)
-    sheet_names = wb.sheetnames
-    ws = wb[sheet_names[0]]
-    wb.remove_sheet(ws)
-    wb.create_sheet('成绩')
-    ws = wb['成绩']
+    wb = Workbook()
+    ws = wb.active
     ws.append(['姓名'] + max_courses)
     for name, score in person.items():
         name = [name]
@@ -224,12 +219,13 @@ def store(file):
     ws['B1'] = '本学期绩点(不含选修)'
     ws['C1'] = '本学年绩点(不含选修)'
     ws['D1'] = '总绩点(不含选修)'
-    wb.save(file)
+    wb.save(file+'/score.xlsx')
 
 
 def start(fileopen, xterm, filestore):
     query(fileopen, xterm)
     store(filestore)
+    os.remove(fileopen)
     global errors
 
     return "执行完毕，失败{}处！---------- {}".format(errors, time.strftime('%H:%M:%S', time.localtime(time.time())))

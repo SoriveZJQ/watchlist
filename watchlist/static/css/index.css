@@ -43,3 +43,7 @@ form.form {
     border: 1px black solid;
 
 }
+a.download {
+    margin-left: 15%;
+    color: red;
+}

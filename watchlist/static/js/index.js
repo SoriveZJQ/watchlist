@@ -6,9 +6,6 @@ function init() {
     formfile[0].addEventListener("change", function () {
         formfilename[0].value = formfile[0].files[0].name;
     });
-    formfile[1].addEventListener("change", function () {
-        formfilename[1].value = formfile[1].files[0].name;
-    });
     submit.addEventListener("click", function (event) {
         result.placeholder = "";
         Response.redirect('index');
